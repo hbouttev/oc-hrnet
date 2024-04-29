@@ -12,15 +12,15 @@ export default function ErrorPage() {
   if (isRouteErrorResponse(error)) {
     let errorText = error.statusText || error.data;
     if (error.status === 404) {
-      errorText = "Oups ! La page que vous demandez n'existe pas.";
+      errorText = "Oops! This page doesn't exist.";
     }
 
     return (
-      <div className="flex w-full flex-col items-center gap-8 py-12 text-white">
+      <div className="flex w-full flex-col items-center gap-8 py-12">
         <h1 className="text-5xl	font-bold">{error.status}</h1>
         <p>{errorText}</p>
         <Link to="/" className="underline">
-          Retourner sur la page d'accueil
+          Go back to home
         </Link>
       </div>
     );
@@ -28,11 +28,11 @@ export default function ErrorPage() {
     console.error(error);
 
     return (
-      <div className="flex w-full flex-col items-center gap-8 py-12 text-white">
+      <div className="flex w-full flex-col items-center gap-8 py-12">
         <h1 className="text-5xl	font-bold">Oups !</h1>
-        <p>Désolé, une erreur imprévue s'est produite.</p>
+        <p>Sorry, Something went wrong.</p>
         <Link to="/" className="underline">
-          Retourner sur la page d'accueil
+          Go back to home
         </Link>
       </div>
     );
