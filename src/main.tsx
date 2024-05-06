@@ -9,35 +9,40 @@ import EmployeeList, {
   loader as employeeListLoader,
 } from '~/routes/employee-list';
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: '/',
+      element: <RootLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          errorElement: <ErrorPage />,
+          children: [
+            {
+              index: true,
+              element: <RootIndex />,
+              action: rootAction,
+            },
+            {
+              path: '/employee-list',
+              element: <EmployeeList />,
+              loader: employeeListLoader,
+            },
+            {
+              path: '/*',
+              element: <></>,
+              loader: errorLoader,
+            },
+          ],
+        },
+      ],
+    },
+  ],
   {
-    path: '/',
-    element: <RootLayout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        errorElement: <ErrorPage />,
-        children: [
-          {
-            index: true,
-            element: <RootIndex />,
-            action: rootAction,
-          },
-          {
-            path: '/employee-list',
-            element: <EmployeeList />,
-            loader: employeeListLoader,
-          },
-          {
-            path: '/*',
-            element: <></>,
-            loader: errorLoader,
-          },
-        ],
-      },
-    ],
-  },
-]);
+    basename: '/oc-hrnet',
+  }
+);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
