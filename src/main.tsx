@@ -40,7 +40,7 @@ const router = createBrowserRouter(
     },
   ],
   {
-    basename: '/oc-hrnet',
+    basename: '/oc-hrnet/',
   }
 );
 
