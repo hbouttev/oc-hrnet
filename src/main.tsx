@@ -8,6 +8,7 @@ import RootIndex, { action as rootAction } from '~/routes/index';
 import EmployeeList, {
   loader as employeeListLoader,
 } from '~/routes/employee-list';
+import 'hb-oc-hrnet-modal/default-styles.css';
 
 const router = createBrowserRouter(
   [
